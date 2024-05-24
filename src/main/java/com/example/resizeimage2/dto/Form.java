@@ -16,4 +16,12 @@ public class Form {
                 ", size=" + size +
                 '}';
     }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public int getSize() {
+        return size;
+    }
 }
