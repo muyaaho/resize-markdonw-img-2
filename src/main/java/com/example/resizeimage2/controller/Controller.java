@@ -1,5 +1,9 @@
 package com.example.resizeimage2.controller;
 
+import com.example.resizeimage2.dto.Form;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -12,7 +16,20 @@ public class Controller {
     }
 
     @PostMapping("/modify")
-    public String Form() {
+    public String Form(Form form) {
+        System.out.println(form.toString());
         return "";
+    }
+
+
+    public String getUrl(String url) throws Exception {
+
+        String re = "(ftp|http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?[^)]";
+        Pattern p = Pattern.compile(re);
+        Matcher m = p.matcher(url);
+        if (!m.find()) {
+            throw new Exception();
+        }
+        return m.group();
     }
 }
