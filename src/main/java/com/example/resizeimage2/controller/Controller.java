@@ -3,7 +3,6 @@ package com.example.resizeimage2.controller;
 import com.example.resizeimage2.dto.Form;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -31,5 +30,13 @@ public class Controller {
             throw new Exception();
         }
         return m.group();
+    }
+
+    public String applySize(String url, int size) {
+        String strSize = Integer.toString(size);
+        return "<img src=" + url +
+                " width=\"" + strSize +
+                "%\" height=\"" + strSize +
+                "%\"/><br>";
     }
 }
