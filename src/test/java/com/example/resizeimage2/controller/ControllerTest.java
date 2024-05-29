@@ -16,7 +16,7 @@ class ControllerTest {
     @Test
     void getUrl() throws Exception {
         String url = "![image](https://github.com/muyaaho/http-basic/assets/76798969/99f76ca6-9776-4382-a22e-e9fa81b5d40a)";
-        String result = controller.getUrl(url);
+        String result = controller.reUrl(url);
         String answer = "https://github.com/muyaaho/http-basic/assets/76798969/99f76ca6-9776-4382-a22e-e9fa81b5d40a";
         System.out.println(result);
         assertEquals(answer, result);

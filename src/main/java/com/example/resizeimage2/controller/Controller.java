@@ -22,7 +22,7 @@ public class Controller {
 
         System.out.println(form.toString());
         result = getResult(form);
-        return "";
+        return "redirect:/result";
     }
 
     @GetMapping("/result")
@@ -32,7 +32,7 @@ public class Controller {
     }
 
 
-    public String getUrl(String url) throws Exception {
+    public String reUrl(String url) throws Exception {
 
         String re = "(ftp|http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?[^)]";
         Pattern p = Pattern.compile(re);
