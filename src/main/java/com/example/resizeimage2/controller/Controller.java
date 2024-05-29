@@ -20,6 +20,11 @@ public class Controller {
         return "";
     }
 
+    @GetMapping("/result")
+    public String show() {
+        return "result";
+    }
+
 
     public String getUrl(String url) throws Exception {
 
@@ -38,5 +43,11 @@ public class Controller {
                 " width=\"" + strSize +
                 "%\" height=\"" + strSize +
                 "%\"/><br>";
+    }
+
+    public String getResult(Form form) {
+        String result = applySize(form.getUrl(), form.getSize());
+        System.out.println("result: "+result);
+        return "";
     }
 }
