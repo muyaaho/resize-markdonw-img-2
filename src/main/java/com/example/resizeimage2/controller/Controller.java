@@ -18,7 +18,7 @@ public class Controller {
     }
 
     @PostMapping("/modify")
-    public String Form(Form form) {
+    public String Form(Form form) throws Exception {
 
         System.out.println(form.toString());
         result = getResult(form);
@@ -51,7 +51,7 @@ public class Controller {
                 "%\"/><br>";
     }
 
-    public String getResult(Form form) {
-        return applySize(form.getUrl(), form.getSize());
+    public String getResult(Form form) throws Exception {
+        return applySize(reUrl(form.getUrl()), form.getSize());
     }
 }
