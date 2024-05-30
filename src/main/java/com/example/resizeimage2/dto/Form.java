@@ -1,8 +1,13 @@
 package com.example.resizeimage2.dto;
 
+import lombok.Getter;
+
 public class Form {
+    @Getter
     private String url;
+    @Getter
     private int size;
+    private String result;
 
     public Form(String url, int size) {
         this.url = url;
@@ -17,11 +22,6 @@ public class Form {
                 '}';
     }
 
-    public String getUrl() {
-        return url;
-    }
 
-    public int getSize() {
-        return size;
-    }
+
 }
