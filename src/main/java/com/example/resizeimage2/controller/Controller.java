@@ -1,5 +1,6 @@
 package com.example.resizeimage2.controller;
 
+import com.example.resizeimage2.AllChangeService;
 import com.example.resizeimage2.dto.Form;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class Controller {
 
     private String result;
+    private AllChangeService allChangeService;
 
     @GetMapping("/new")
     public String newForm() {
@@ -22,6 +24,11 @@ public class Controller {
 
         System.out.println(form.toString());
         result = getResult(form);
+        return "redirect:/result";
+    }
+
+    @PostMapping("/modify2")
+    public String Form2(Form form) {
         return "redirect:/result";
     }
 
