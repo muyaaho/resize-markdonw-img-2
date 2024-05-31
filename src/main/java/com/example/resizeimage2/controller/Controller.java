@@ -2,6 +2,7 @@ package com.example.resizeimage2.controller;
 
 import com.example.resizeimage2.AllChangeService;
 import com.example.resizeimage2.dto.Form;
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.springframework.ui.Model;
@@ -19,6 +20,11 @@ public class Controller {
         return "new";
     }
 
+    @GetMapping("/all-new")
+    public String newForm2() {
+        return "allNew";
+    }
+
     @PostMapping("/modify")
     public String Form(Form form) throws Exception {
 
@@ -28,14 +34,24 @@ public class Controller {
     }
 
     @PostMapping("/modify2")
-    public String Form2(Form form) {
-        return "redirect:/result";
+    public String Form2(Form form) throws IOException {
+        allChangeService = new AllChangeService(form);
+        return "redirect:/result2";
     }
 
     @GetMapping("/result")
     public String show(Model model) {
         model.addAttribute("resultUrl", result);
         return "result";
+    }
+
+    @GetMapping("/result2")
+    public String show2(Model model) {
+        System.out.println("@@@여기 실행 안되나요?");
+        model.addAttribute("allResultUrl", allChangeService.getOutputString());
+        System.out.println(allChangeService.getInputString());
+//        System.out.println(allChangeService.getOutputString());
+        return "allResult";
     }
 
 
