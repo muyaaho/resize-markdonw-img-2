@@ -1,6 +1,8 @@
 package com.example.resizeimage2.controller;
 
+import com.example.resizeimage2.AllChangeService;
 import com.example.resizeimage2.dto.Form;
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.springframework.ui.Model;
@@ -11,10 +13,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class Controller {
 
     private String result;
+    private AllChangeService allChangeService;
 
     @GetMapping("/new")
     public String newForm() {
         return "new";
+    }
+
+    @GetMapping("/all-new")
+    public String newForm2() {
+        return "allNew";
     }
 
     @PostMapping("/modify")
@@ -25,10 +33,22 @@ public class Controller {
         return "redirect:/result";
     }
 
+    @PostMapping("/modify2")
+    public String Form2(Form form) throws IOException {
+        allChangeService = new AllChangeService(form);
+        return "redirect:/result2";
+    }
+
     @GetMapping("/result")
     public String show(Model model) {
         model.addAttribute("resultUrl", result);
         return "result";
+    }
+
+    @GetMapping("/result2")
+    public String show2(Model model) {
+        model.addAttribute("allResultUrl", allChangeService.getOutputString());
+        return "allResult";
     }
 
 
