@@ -13,7 +13,9 @@ public class AllChangeTools {
         BufferedReader br = new BufferedReader(new StringReader(lines));
         String line = "";
         while ((line = br.readLine()) != null) {
-            if (line.contains("![image]")) {
+            int idx = line.indexOf("![image]");
+            if (idx > -1) {
+                result.append(line, 0, idx);
                 result.append(applySize(reUrl(line), size)).append("\n");
                 continue;
             }

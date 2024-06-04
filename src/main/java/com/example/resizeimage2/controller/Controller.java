@@ -47,10 +47,7 @@ public class Controller {
 
     @GetMapping("/result2")
     public String show2(Model model) {
-        System.out.println("@@@여기 실행 안되나요?");
         model.addAttribute("allResultUrl", allChangeService.getOutputString());
-        System.out.println(allChangeService.getInputString());
-//        System.out.println(allChangeService.getOutputString());
         return "allResult";
     }
 

@@ -40,4 +40,24 @@ class AllChangeToolsTest {
         assertEquals(answer, allChangeTools.changeLines(input, inputSize));
 
     }
+
+    @Test
+    void changeLine2() throws IOException {
+        String input = "- 특징\n"
+                + "\n"
+                + "  ![image](https://github.com/muyaaho/spring-basic/assets/76798969/c3511405-9e55-482e-8b64-ccd929f83480)\n"
+                + "\n"
+                + "    - 필요한 스레드를 스레드 풀에 보관하고 관리한다.\n"
+                + "    - 스레드 풀에 생성할 수 있는 스레드의 최대치를 관리한다. 톰캣은 최대 200개 기본 설정";
+
+        int inputSize = 80;
+        String answer = "- 특징\n"
+                + "\n"
+                + "  <img src=https://github.com/muyaaho/spring-basic/assets/76798969/c3511405-9e55-482e-8b64-ccd929f83480 width=\"80%\" height=\"80%\"/><br>\n"
+                + "\n"
+                + "    - 필요한 스레드를 스레드 풀에 보관하고 관리한다.\n"
+                + "    - 스레드 풀에 생성할 수 있는 스레드의 최대치를 관리한다. 톰캣은 최대 200개 기본 설정";
+
+        assertEquals(answer, allChangeTools.changeLines(input, inputSize));
+    }
 }
