@@ -14,6 +14,10 @@ public class AllChangeTools {
         String line = "";
         while ((line = br.readLine()) != null) {
             int idx = line.indexOf("![image]");
+            if (idx == -1) {
+                idx = line.indexOf("<img src");
+            }
+
             if (idx > -1) {
                 result.append(line, 0, idx);
                 result.append(applySize(reUrl(line), size)).append("\n");
