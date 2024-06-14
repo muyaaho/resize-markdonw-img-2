@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+</head>
+<body>
+    <input type=text" id="ip">
+    <button>입력</button>
+    <p></p>
+    <script>
+
+        $("p").on("evt", function(event, inp) {
+            $(this).text(inp);
+        });
+
+        $("button").click(function() {
+            var inp = $("input#ip").val();
+            $("p").trigger("evt", [inp]);
+        });
+    </script>
+</body>
+</html>
