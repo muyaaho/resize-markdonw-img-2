@@ -26,6 +26,7 @@
         $(document).ready(function() {
             $('button#change').click( function() {
                 var inp = $('textarea#inputArea').val();
+                $('textarea#outputArea').val(inp);
                 alert(inp);
             });
         });
